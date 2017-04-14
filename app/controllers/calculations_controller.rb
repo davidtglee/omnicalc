@@ -10,14 +10,15 @@ class CalculationsController < ApplicationController
     # The special word the user input is in the string @special_word.
     # ================================================================================
 
+    @text.gsub(/[^a-z0-9\s]/i, "")
+    @word_count = @text.split.count
 
-    @word_count = "Replace this string with your answer."
+    @character_count_with_spaces = @text.size
 
-    @character_count_with_spaces = "Replace this string with your answer."
+    @character_count_without_spaces = @text.gsub(" ","").size
 
-    @character_count_without_spaces = "Replace this string with your answer."
+    @occurrences = @text.downcase.split.count(@special_word)
 
-    @occurrences = "Replace this string with your answer."
 
     # ================================================================================
     # Your code goes above.
@@ -37,8 +38,11 @@ class CalculationsController < ApplicationController
     # The number of years the user input is in the integer @years.
     # The principal value the user input is in the decimal @principal.
     # ================================================================================
+    @interest=@apr/1200
+    @denominator=1-1/((1+@interest)**(@years*12))
+    @payment=@principal*@interest/@denominator
 
-    @monthly_payment = "Replace this string with your answer."
+    @monthly_payment = @payment
 
     # ================================================================================
     # Your code goes above.
@@ -59,13 +63,13 @@ class CalculationsController < ApplicationController
     #   So if you subtract one time from another, you will get an integer
     #   number of seconds as a result.
     # ================================================================================
-
-    @seconds = "Replace this string with your answer."
-    @minutes = "Replace this string with your answer."
-    @hours = "Replace this string with your answer."
-    @days = "Replace this string with your answer."
-    @weeks = "Replace this string with your answer."
-    @years = "Replace this string with your answer."
+    @subtraction=@starting-@ending
+    @seconds = @seconds
+    @minutes = @minutes
+    @hours = @hours
+    @days = @days
+    @weeks = @weeks
+    @years = @years
 
     # ================================================================================
     # Your code goes above.
