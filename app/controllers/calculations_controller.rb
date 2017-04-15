@@ -17,7 +17,7 @@ class CalculationsController < ApplicationController
 
     @character_count_without_spaces = @text.gsub(" ","").size
 
-    @occurrences = @text.downcase.split.count(@special_word)
+    @occurrences = @text.downcase.split.count(@special_word) #?#
 
 
     # ================================================================================
@@ -41,7 +41,6 @@ class CalculationsController < ApplicationController
     @interest=@apr/1200
     @denominator=1-1/((1+@interest)**(@years*12))
     @payment=@principal*@interest/@denominator
-
     @monthly_payment = @payment
 
     # ================================================================================
@@ -63,18 +62,17 @@ class CalculationsController < ApplicationController
     #   So if you subtract one time from another, you will get an integer
     #   number of seconds as a result.
     # ================================================================================
-    @subtraction=@starting-@ending
-    @seconds = @seconds
-    @minutes = @minutes
-    @hours = @hours
-    @days = @days
-    @weeks = @weeks
-    @years = @years
+    @subtraction=@ending-@starting
+    @years=@subtraction/(60*60*24*7*52)
+    @weeks=@subtraction/(60*60*24*7)
+    @days=@subtraction/(60*60*24)
+    @hours=@subtraction/(60*60)
+    @minutes=@subtraction/60
+    @seconds=@subtraction
 
     # ================================================================================
     # Your code goes above.
     # ================================================================================
-
     render("time_between.html.erb")
   end
 
@@ -86,27 +84,35 @@ class CalculationsController < ApplicationController
     # The numbers the user input are in the array @numbers.
     # ================================================================================
 
-    @sorted_numbers = "Replace this string with your answer."
+    @sorted_numbers = @numbers.sort #correct#
 
-    @count = "Replace this string with your answer."
+    @count = @numbers.count #correct#
 
-    @minimum = "Replace this string with your answer."
+    @minimum = @numbers.min #correct#
 
-    @maximum = "Replace this string with your answer."
+    @maximum = @numbers.max #correct#
 
-    @range = "Replace this string with your answer."
+    @range = @numbers.min...@numbers.max #?#
 
-    @median = "Replace this string with your answer."
+    med=@numbers.sort #correct#
+    len=med.length
+    @median=(med[(len-1)/2]+med[len/2])/2.0
 
-    @sum = "Replace this string with your answer."
+    @sum = @numbers.sum #correct#
 
-    @mean = "Replace this string with your answer."
+    @mean = @numbers.sum/@numbers.count #correct#
 
-    @variance = "Replace this string with your answer."
+    var=[] #correct#
+    @numbers.each do |num|
+    @numsq=(num-@mean)**2/@count
+      var.push(@numsq)
+      @variance=var.sum
+    end
 
-    @standard_deviation = "Replace this string with your answer."
+    i=Math.sqrt(@variance) #correct#
+    @standard_deviation = i
 
-    @mode = "Replace this string with your answer."
+    @mode = @numbers.split.mod(@numbers)
 
     # ================================================================================
     # Your code goes above.
