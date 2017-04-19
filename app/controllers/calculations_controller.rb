@@ -92,7 +92,7 @@ class CalculationsController < ApplicationController
 
     @maximum = @numbers.max #correct#
 
-    @range = @numbers.min...@numbers.max #?#
+    @range = @numbers.min...@numbers.max #Still working?#
 
     med=@numbers.sort #correct#
     len=med.length
