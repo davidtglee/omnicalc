@@ -92,7 +92,7 @@ class CalculationsController < ApplicationController
 
     @maximum = @numbers.max #correct#
 
-    @range = @numbers.min...@numbers.max #Still working?#
+ @range = @numbers.minmax
 
     med=@numbers.sort #correct#
     len=med.length
@@ -112,7 +112,9 @@ class CalculationsController < ApplicationController
     i=Math.sqrt(@variance) #correct#
     @standard_deviation = i
 
-    #@mode = @numbers.split.mod(@numbers)
+data=@numbers
+@mod=data.mode
+    @mode = @mod
 
     # ================================================================================
     # Your code goes above.
