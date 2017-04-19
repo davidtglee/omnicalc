@@ -112,7 +112,7 @@ class CalculationsController < ApplicationController
     i=Math.sqrt(@variance) #correct#
     @standard_deviation = i
 
-    @mode = @numbers.split.mod(@numbers)
+    #@mode = @numbers.split.mod(@numbers)
 
     # ================================================================================
     # Your code goes above.
